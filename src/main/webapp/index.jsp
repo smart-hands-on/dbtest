@@ -22,21 +22,23 @@
     <body>
         <h1>Hello World!</h1>
         <p>
-	        <%
-	        GenericService gs = (GenericService) new InitialContext().lookup("java:global/dbtest/GenericService");
- 			final String remoteIPAddress =
- 					request.getHeader("X-Forwarded-For") != null ?
-					request.getHeader("X-Forwarded-For") : request.getRemoteAddr();
-
-	        ShotAudit sessionLog = new ShotAudit();
-	        sessionLog.setDsid(session.getId());
-	        sessionLog.setViewId(request.getRequestURI());
-	        sessionLog.setViewDate(new Date());
-	        sessionLog.setServerHostname(InetAddress.getLocalHost().getHostName());
-	        sessionLog.setClientIp(remoteIPAddress);
-	        
-	        gs.create(sessionLog);
-			%>
+			The project has been updated!
         </p>
     </body>
 </html>
+
+<%
+GenericService gs = (GenericService) new InitialContext().lookup("java:global/dbtest/GenericService");
+final String remoteIPAddress =
+	request.getHeader("X-Forwarded-For") != null ?
+	request.getHeader("X-Forwarded-For") : request.getRemoteAddr();
+
+ShotAudit sessionLog = new ShotAudit();
+sessionLog.setDsid(session.getId());
+sessionLog.setViewId(request.getRequestURI());
+sessionLog.setViewDate(new Date());
+sessionLog.setServerHostname(InetAddress.getLocalHost().getHostName());
+sessionLog.setClientIp(remoteIPAddress);
+
+gs.create(sessionLog);
+%>
