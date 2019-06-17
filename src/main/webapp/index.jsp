@@ -22,7 +22,7 @@
     <body>
       <h1>Hello World!</h1>
         <p>
-			The project has been updated! (Yes, again and again...)
+			This a new version.
         </p>
     </body>
 </html>
